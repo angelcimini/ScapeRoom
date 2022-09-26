@@ -99,14 +99,14 @@ const k8 = 6000;
                                         fondoKeyboard(); // <-- Siguiente nivel
                                     })
 
-                                }, kdev); 
-                            }, kdev);
-                        }, kdev);
-                    }, kdev);
-                }, kdev);
-            }, kdev);
-        }, kdev); 
-    }, kdev);     
+                                }, 6000); 
+                            }, 3500);
+                        }, 1400);
+                    }, 4560);
+                }, 8000);
+            }, 6000);
+        }, 12000); 
+    }, 2000);     
 }
 
 function fondoKeyboard() {
@@ -230,6 +230,10 @@ function hall() {
     }
     if(containerFondo[6].style.display == 'block') { 
         containerFondo[6].style.display = 'none';
+        containerFondo[3].style.display = 'block';
+    }
+    if(containerFondo[10].style.display == 'block') { 
+        containerFondo[10].style.display = 'none';
         containerFondo[3].style.display = 'block';
     }
 //MOVING THROUGH ROOMS
@@ -401,6 +405,10 @@ function catacombs() {
         containerFondo[3].style.display = 'none';
         containerFondo[10].style.display = 'block';
     }
+    if(containerFondo[11].style.display == 'block') { 
+        containerFondo[11].style.display = 'none';
+        containerFondo[10].style.display = 'block';
+    }
 //MOVING THROUGH ROOMS
     const hanlderArrows = e => {
         if(e.code == "ArrowDown")
@@ -408,23 +416,27 @@ function catacombs() {
                 document.body.removeEventListener('keydown', hanlderArrows)
                 hall(); // <-- Siguiente nivel
             }
+        if(e.code == "ArrowUp")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                cell(); // <-- Siguiente nivel
+            }
         }
     document.body.addEventListener('keydown', hanlderArrows )
 }
 
 function cell() {
 //FIXING DOM
-    if(containerFondo[10].style.display == 'block')
-        { 
-            containerFondo[10].style.display = 'none';
-            containerFondo[11].style.display = 'block';
-        }
+    if(containerFondo[10].style.display == 'block') { 
+        containerFondo[10].style.display = 'none';
+        containerFondo[11].style.display = 'block';
+    }
 //MOVING THROUGH ROOMS
     const hanlderArrows = e => {
         if(e.code == "ArrowDown")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                hall(); // <-- Siguiente nivel
+                catacombs(); // <-- Siguiente nivel
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )

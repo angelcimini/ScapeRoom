@@ -91,43 +91,43 @@ span {
 }
 
 .containerHall {
-    background-image: url('../src/images/hall.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/hall.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerDebris {
-    background-image: url('../src/images/debris02.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/debris02.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerPuertaCode {
-    background-image: url('../src/images/puertaCode.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/puertaCode.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerPasillo {
-    background-image: url('../src/images/pasillo.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/pasillo.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerHab1{
-    background-image: url('../src/images/hab01.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/hab01.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerHab2 {
-    background-image: url('../src/images/hab02.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/hab02.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerToilet {
-    background-image: url('../src/images/toilet.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/toilet.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
