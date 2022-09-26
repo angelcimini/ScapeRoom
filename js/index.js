@@ -11,12 +11,12 @@ let titulo3 = document.getElementById('titulo3')
 let btn1 = document.getElementById('btn1')
 
 let jugador = {
-    nombre: '',
+    // nombre: '',
     objetos: []
 };
 
 function fondoPointer() {
-
+    //borrar controles fijos footer
 //INTERVALS
     let intervalPointer;
 
@@ -34,12 +34,30 @@ function fondoPointer() {
     let footsteps = new Audio('src/audio/door-footsteps.mp3');
 
     let toneBeep = new Audio('src/audio/tone-beep.wav');
-    toneBeep.volume = 0.6;
 
     let angry = new Audio('src/audio/the-angry.wav');
     angry.volume = 0.02;
     let beeps = new Audio('src/audio/beeps.wav')
     beeps.volume = 0.08;
+
+//DOM TIMES
+const k1 = 2000;
+const k1dev = 50;
+const k2 = 12000;
+const k2dev = 50;
+const k3 = 6000;
+const k3dev = 50;
+const k4 = 8000;
+const k4dev = 50;
+const k5 = 4560;
+const k5dev = 50;
+const k6 = 1400;
+const k6dev = 50;
+const k7 = 3500;
+const k7dev = 50;
+const k8 = 6000;
+const k8dev = 50;
+
 
 //DOM CHANGES
     btn1.classList.add('displayNone')
@@ -64,9 +82,10 @@ function fondoPointer() {
                             beeps.pause();
                             setTimeout(() => {
                                 titulo1.innerHTML= `<span class="red"> Nuestra fiesta tendrá que esperar.
-                                                    <br> Pero volveré pronto para jugar contigo.
-                                                    <br> Hasta pronto princesita. </span>`
+                                                    <br> Pero en nada volveré para jugar contigo.
+                                                    <br><br> Hasta pronto princesita... </span>`
                                 setTimeout(() => {
+                                    
                                     titulo1.innerHTML= `. . . `      
                                     footsteps.play();
                                     setTimeout(()=> {
@@ -78,7 +97,7 @@ function fondoPointer() {
                                                 containerFondo[0].classList.add('dark')
                                             }, 200)
                                         }, 300)                                       
-                                    }, 5000) 
+                                    }, 3000) 
                                     
                                     containerFondo[0].addEventListener('click', ()=>{
                                         if(intervalPointer) {clearInterval(intervalPointer)};
@@ -86,14 +105,14 @@ function fondoPointer() {
                                         fondoKeyboard(); // <-- Siguiente nivel
                                     })
 
-                                }, 6000); 
-                            }, 3500);
-                        }, 1400);
-                    }, 4560);
-                }, 8000);
-            }, 6000);
-        }, 12000); 
-    }, 2000);     
+                                }, k8dev); 
+                            }, k7dev);
+                        }, k6dev);
+                    }, k5dev);
+                }, k4dev);
+            }, k3dev);
+        }, k2dev); 
+    }, k1dev);     
 }
 
 function fondoKeyboard() {
@@ -103,33 +122,32 @@ function fondoKeyboard() {
     
 //AUDIOS    
     let bloockedDoor = new Audio('src/audio/bloocked-door.wav');
+    bloockedDoor.volume = 0.08;
     
 //DOM CHANGES    
     containerFondo[0].style.display = 'none';
+    // containerFondo[1].classList.remove('displayNone')
     containerFondo[1].style.display = 'block';
-
+    
     containerFondo[1].addEventListener('click', ()=>{
         bloockedDoor.play();
         titulo2.innerHTML = `<span>¿Está Cerrada? ¡Mierda! Probaré de otra forma...</span>`
 
-        document.addEventListener('keydown', e =>{
-            console.log(e.code)
+        const hanlderArrows = e => {
             if
-                (   
-                    e.code == "ArrowRight" || 
-                    e.code == "ArrowLeft" ||
-                    e.code == "ArrowUp" ||
-                    e.code == "ArrowDown"
-                )
+            (   e.code == "ArrowRight" || 
+                e.code == "ArrowLeft" ||
+                e.code == "ArrowUp" ||
+                e.code == "ArrowDown"   
+            )
                 {
-                    document.onkeydown = null;
-                    document.onkeydown = () => {}
-                    document.addEventListener('keydown', ()=>{})
+                    document.body.removeEventListener('keydown', hanlderArrows)
                     if(intervalKeyboard) {clearInterval(intervalKeyboard)};
                     fondoCatacombs(); // <-- Siguiente nivel
                 }
-        })
-
+            }
+        document.body.addEventListener('keydown', hanlderArrows )
+            
         setTimeout(()=> {
             intervalKeyboard = setInterval(()=>{
                 containerFondo[1].classList.remove('dark')
@@ -139,25 +157,23 @@ function fondoKeyboard() {
                     containerFondo[1].classList.add('dark')
                 }, 100)
             }, 50)
-        }, 10000)  // <-- Tiempo antes de la pista
-        
+        }, 9000)  // <-- Tiempo antes de la pista    
     })
 }
 
 function fondoCatacombs() {
-    document.onkeydown = null;
-    document.onkeydown = () => {}
-    document.addEventListener ('keydown',() => {})
 
-    containerFondo[1].style.display = 'none';
-    containerFondo[2].style.display = 'block';
-
-    let beat = new Audio('src/audio/large-wooden-gate.wav');
-    beat.play();
-
+//INTERVALS
     let intervalCatacombs;
     let intervalCatacombs2;
-
+    
+//AUDIOS
+    let beat = new Audio('src/audio/large-wooden-gate.wav');
+    beat.play();
+    
+//DOM CHANGES 
+    containerFondo[1].style.display = 'none';
+    containerFondo[2].style.display = 'block';
     setTimeout(()=> {
         intervalCatacombs = setInterval(()=>{
             containerFondo[2].classList.remove('dark')
@@ -167,7 +183,6 @@ function fondoCatacombs() {
                 containerFondo[2].classList.add('dark')
             }, 120)
         }, 100)
-
         setTimeout(()=> {
             if(intervalCatacombs) {clearInterval(intervalCatacombs)}
             intervalCatacombs2 = setInterval(()=>{
@@ -178,11 +193,9 @@ function fondoCatacombs() {
                     containerFondo[2].classList.add('dark')
                 }, 170)
             }, 150)
-
             setTimeout(()=> {
                 if(intervalCatacombs2) {clearInterval(intervalCatacombs2)}
                 beat.pause()
-
                 setTimeout(() => {
                     titulo3.innerHTML = `<span>Lo que faltaba, tendré que encontrar el camino a oscuras</span>`
                     setTimeout(() => {
@@ -190,22 +203,24 @@ function fondoCatacombs() {
                         setTimeout(() => {
                             titulo3.innerHTML = ``                        
                         }, 1000);                        
+                        setTimeout(() => {
+                            const hanlderArrowUp = e => {
+                                if(e.code == "ArrowRight")
+                                    {
+                                        document.body.removeEventListener('keydown', hanlderArrowUp)
+                                        if(intervalKeyboard) {clearInterval(intervalKeyboard)};
+                                        fondoCatacombs(); // <-- Siguiente nivel
+                                    }
+                                }
+                            document.body.addEventListener('keydown', hanlderArrowUp )
+                        }, 1000);
                     }, 3000);
                 }, 1000);
-
-                setTimeout(() => {
-                    document.addEventListener('keydown', e =>{
-                        if(e.code == "ArrowUp"){
-                            siguiente()
-                        }
-                    })
-                }, 1000);
-
             }, 2500)
         }, 2000)
     }, 5000)
 }
 
-function siguiente() {
+function hall() {
     console.log('pizzacola')
 }

@@ -15,7 +15,7 @@ body {
     text-align: center;
     border-radius: 20px;
     box-shadow: 10px 10px 10px 7px rgba(0, 0, 0, 0.5);
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
 .containerFondo h1 {
@@ -47,15 +47,15 @@ button:hover {
 
 .danger {
     background-color: rgb(206, 0, 0);
-    transition: background-color 1.5s;
+    /* transition: background-color 1.5s; */
 }
 .alert {
     background-color: rgb(236, 147, 0);
-    transition: background-color 1.5s;
+    /* transition: background-color 1.5s; */
 }
 .victory {
     background-color: rgb(0, 139, 0);
-    transition: background-color 1.5s;
+    /* transition: background-color 1.5s; */
 }
 
 
@@ -76,6 +76,7 @@ span {
 .containerFondoPointer {
     background-image: url('../src/images/pointer.png');
     background-size: contain;
+
 }
 
 .containerFondoKeyboard {
@@ -85,6 +86,7 @@ span {
 
 .containerFondoCatacombs {
     background-image: url('../src/images/Catacombs-of-Rome.jpg');
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
