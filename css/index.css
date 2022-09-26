@@ -10,7 +10,7 @@ body {
 .containerFondo {
     border: 3px dotted rgb(109, 0, 0);
     margin: auto;
-    width: 90%;
+    width: 700px;
     height: 450px;
     text-align: center;
     border-radius: 20px;
@@ -84,9 +84,52 @@ span {
     background-size: contain;
 }
 
-.containerFondoCatacombs {
+.containerFondoCatacombs, .containerCatacombs {
     background-image: url('../src/images/Catacombs-of-Rome.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.containerHall {
+    background-image: url('../src/images/hall.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerDebris {
+    background-image: url('../src/images/debris02.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerPuertaCode {
+    background-image: url('../src/images/puertaCode.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerPasillo {
+    background-image: url('../src/images/pasillo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerHab1{
+    background-image: url('../src/images/hab01.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerHab2 {
+    background-image: url('../src/images/hab02.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerToilet {
+    background-image: url('../src/images/toilet.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 

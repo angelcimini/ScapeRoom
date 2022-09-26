@@ -40,23 +40,17 @@ function fondoPointer() {
     let beeps = new Audio('src/audio/beeps.wav')
     beeps.volume = 0.08;
 
-//DOM TIMES
+//DEV HACK
+const kdev = 50;
 const k1 = 2000;
-const k1dev = 50;
 const k2 = 12000;
-const k2dev = 50;
 const k3 = 6000;
-const k3dev = 50;
 const k4 = 8000;
-const k4dev = 50;
 const k5 = 4560;
-const k5dev = 50;
 const k6 = 1400;
-const k6dev = 50;
 const k7 = 3500;
-const k7dev = 50;
 const k8 = 6000;
-const k8dev = 50;
+
 
 
 //DOM CHANGES
@@ -105,30 +99,29 @@ const k8dev = 50;
                                         fondoKeyboard(); // <-- Siguiente nivel
                                     })
 
-                                }, k8dev); 
-                            }, k7dev);
-                        }, k6dev);
-                    }, k5dev);
-                }, k4dev);
-            }, k3dev);
-        }, k2dev); 
-    }, k1dev);     
+                                }, kdev); 
+                            }, kdev);
+                        }, kdev);
+                    }, kdev);
+                }, kdev);
+            }, kdev);
+        }, kdev); 
+    }, kdev);     
 }
 
 function fondoKeyboard() {
-
+//FIXING DOM
+    if(containerFondo[0].style.display = 'block'){
+    containerFondo[0].style.display = 'none';
+    containerFondo[1].style.display = 'block';
+    }
 //INTERVALS
     let intervalKeyboard;
     
 //AUDIOS    
     let bloockedDoor = new Audio('src/audio/bloocked-door.wav');
-    bloockedDoor.volume = 0.08;
     
 //DOM CHANGES    
-    containerFondo[0].style.display = 'none';
-    // containerFondo[1].classList.remove('displayNone')
-    containerFondo[1].style.display = 'block';
-    
     containerFondo[1].addEventListener('click', ()=>{
         bloockedDoor.play();
         titulo2.innerHTML = `<span>¿Está Cerrada? ¡Mierda! Probaré de otra forma...</span>`
@@ -162,18 +155,19 @@ function fondoKeyboard() {
 }
 
 function fondoCatacombs() {
-
+//FIXING DOM
+    containerFondo[1].style.display = 'none';
+    containerFondo[2].style.display = 'block';
 //INTERVALS
     let intervalCatacombs;
     let intervalCatacombs2;
     
 //AUDIOS
-    let beat = new Audio('src/audio/large-wooden-gate.wav');
-    beat.play();
+    let woodenGate = new Audio('src/audio/large-wooden-gate.wav');
+    woodenGate.volume = 0.6;
+    woodenGate.play();
     
 //DOM CHANGES 
-    containerFondo[1].style.display = 'none';
-    containerFondo[2].style.display = 'block';
     setTimeout(()=> {
         intervalCatacombs = setInterval(()=>{
             containerFondo[2].classList.remove('dark')
@@ -195,7 +189,7 @@ function fondoCatacombs() {
             }, 150)
             setTimeout(()=> {
                 if(intervalCatacombs2) {clearInterval(intervalCatacombs2)}
-                beat.pause()
+                woodenGate.pause()
                 setTimeout(() => {
                     titulo3.innerHTML = `<span>Lo que faltaba, tendré que encontrar el camino a oscuras</span>`
                     setTimeout(() => {
@@ -208,8 +202,7 @@ function fondoCatacombs() {
                                 if(e.code == "ArrowRight")
                                     {
                                         document.body.removeEventListener('keydown', hanlderArrowUp)
-                                        if(intervalKeyboard) {clearInterval(intervalKeyboard)};
-                                        fondoCatacombs(); // <-- Siguiente nivel
+                                        hall(); // <-- Siguiente nivel
                                     }
                                 }
                             document.body.addEventListener('keydown', hanlderArrowUp )
@@ -222,5 +215,217 @@ function fondoCatacombs() {
 }
 
 function hall() {
-    console.log('pizzacola')
+//FIXING DOM
+    if(containerFondo[2].style.display == 'block') { 
+        containerFondo[2].style.display = 'none';
+        containerFondo[3].style.display = 'block';
+    }
+    if(containerFondo[4].style.display == 'block') { 
+        containerFondo[4].style.display = 'none';
+        containerFondo[3].style.display = 'block';
+    }
+    if(containerFondo[5].style.display == 'block') { 
+        containerFondo[5].style.display = 'none';
+        containerFondo[3].style.display = 'block';
+    }
+    if(containerFondo[6].style.display == 'block') { 
+        containerFondo[6].style.display = 'none';
+        containerFondo[3].style.display = 'block';
+    }
+//MOVING THROUGH ROOMS
+    const hanlderArrows = e => {
+        if(e.code == "ArrowLeft")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                debris(); // <-- Siguiente nivel
+            }
+        if(e.code == "ArrowRight")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                puertaCode(); // <-- Siguiente nivel
+            }
+        if(e.code == "ArrowUp")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                pasillo(); // <-- Siguiente nivel
+            }
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                catacombs(); // <-- Siguiente nivel
+            }
+        }
+    document.body.addEventListener('keydown', hanlderArrows )
+
+
+
+
+}
+
+function debris() {
+//FIXING DOM
+    if(containerFondo[3].style.display == 'block') { 
+        containerFondo[3].style.display = 'none';
+        containerFondo[4].style.display = 'block';
+    }
+//MOVING THROUGH ROOMS
+    const hanlderArrows = e => {
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                hall(); // <-- Siguiente nivel
+            }
+        }
+    document.body.addEventListener('keydown', hanlderArrows )
+}
+
+function puertaCode() {
+//FIXING DOM
+    if(containerFondo[3].style.display == 'block') { 
+        containerFondo[3].style.display = 'none';
+        containerFondo[5].style.display = 'block';
+    }
+//MOVING THROUGH ROOMS
+    const hanlderArrows = e => {
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                hall(); // <-- Siguiente nivel
+            }
+        }
+    document.body.addEventListener('keydown', hanlderArrows )
+}
+
+
+function pasillo() {
+//FIXING DOM
+    if(containerFondo[3].style.display == 'block') { 
+        containerFondo[3].style.display = 'none';
+        containerFondo[6].style.display = 'block';
+    }
+    if(containerFondo[7].style.display == 'block') { 
+        containerFondo[7].style.display = 'none';
+        containerFondo[6].style.display = 'block';
+    }
+    if(containerFondo[8].style.display == 'block') { 
+        containerFondo[8].style.display = 'none';
+        containerFondo[6].style.display = 'block';
+    }
+    if(containerFondo[9].style.display == 'block') { 
+        containerFondo[9].style.display = 'none';
+        containerFondo[6].style.display = 'block';
+    }
+//MOVING THROUGH ROOMS
+const hanlderArrows = e => {
+    if(e.code == "ArrowLeft")
+        {
+            document.body.removeEventListener('keydown', hanlderArrows)
+            hab1(); // <-- Siguiente nivel
+        }
+    if(e.code == "ArrowRight")
+        {
+            document.body.removeEventListener('keydown', hanlderArrows)
+            hab2(); // <-- Siguiente nivel
+        }
+    if(e.code == "ArrowUp")
+        {
+            document.body.removeEventListener('keydown', hanlderArrows)
+            toilet(); // <-- Siguiente nivel
+        }
+    if(e.code == "ArrowDown")
+        {
+            document.body.removeEventListener('keydown', hanlderArrows)
+            hall(); // <-- Siguiente nivel
+        }
+    }
+document.body.addEventListener('keydown', hanlderArrows )
+
+
+
+}
+
+function hab1() {
+//FIXING DOM
+    if(containerFondo[6].style.display == 'block') { 
+        containerFondo[6].style.display = 'none';
+        containerFondo[7].style.display = 'block';
+    }
+//MOVING THROUGH ROOMS
+    const hanlderArrows = e => {
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                pasillo(); // <-- Siguiente nivel
+            }
+        }
+    document.body.addEventListener('keydown', hanlderArrows )
+}
+
+function hab2() {
+//FIXING DOM
+    if(containerFondo[6].style.display == 'block') { 
+        containerFondo[6].style.display = 'none';
+        containerFondo[8].style.display = 'block';
+    }
+//MOVING THROUGH ROOMS
+    const hanlderArrows = e => {
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                pasillo(); // <-- Siguiente nivel
+            }
+        }
+    document.body.addEventListener('keydown', hanlderArrows )
+}
+
+function toilet() {
+//FIXING DOM
+    if(containerFondo[6].style.display == 'block') { 
+        containerFondo[6].style.display = 'none';
+        containerFondo[9].style.display = 'block';
+    }
+//MOVING THROUGH ROOMS
+    const hanlderArrows = e => {
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                pasillo(); // <-- Siguiente nivel
+            }
+        }
+    document.body.addEventListener('keydown', hanlderArrows )
+}
+
+function catacombs() {
+//FIXING DOM
+    if(containerFondo[3].style.display == 'block') { 
+        containerFondo[3].style.display = 'none';
+        containerFondo[10].style.display = 'block';
+    }
+//MOVING THROUGH ROOMS
+    const hanlderArrows = e => {
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                hall(); // <-- Siguiente nivel
+            }
+        }
+    document.body.addEventListener('keydown', hanlderArrows )
+}
+
+function cell() {
+//FIXING DOM
+    if(containerFondo[10].style.display == 'block')
+        { 
+            containerFondo[10].style.display = 'none';
+            containerFondo[11].style.display = 'block';
+        }
+//MOVING THROUGH ROOMS
+    const hanlderArrows = e => {
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                hall(); // <-- Siguiente nivel
+            }
+        }
+    document.body.addEventListener('keydown', hanlderArrows )
 }
