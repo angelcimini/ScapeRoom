@@ -1,5 +1,8 @@
 let sectionFondoPointer = document.getElementById('sectionFondoPointer')
 let sectionFondoKeyboard = document.getElementById('sectionFondoKeyboard')
+let containerClues = document.getElementById('containerClues')
+let gato = document.getElementById('gato')
+let sectionHab1 = document.getElementById('sectionHab1')
 
 let containerFondo = document.getElementsByClassName('containerFondo')
 let titleDiv = document.getElementsByClassName('titleDiv')
@@ -10,10 +13,6 @@ let titulo3 = document.getElementById('titulo3')
 
 let btn1 = document.getElementById('btn1')
 
-let jugador = {
-    // nombre: '',
-    objetos: []
-};
 
 function fondoPointer() {
     //borrar controles fijos footer
@@ -99,14 +98,14 @@ const k8 = 6000;
                                         fondoKeyboard(); // <-- Siguiente nivel
                                     })
 
-                                }, 6000); 
-                            }, 3500);
-                        }, 1400);
-                    }, 4560);
-                }, 8000);
-            }, 6000);
-        }, 12000); 
-    }, 2000);     
+                                }, kdev); 
+                            }, kdev);
+                        }, kdev);
+                    }, kdev);
+                }, kdev);
+            }, kdev);
+        }, kdev); 
+    }, kdev);     
 }
 
 function fondoKeyboard() {
@@ -199,39 +198,44 @@ function fondoCatacombs() {
                         }, 1000);                        
                         setTimeout(() => {
                             const hanlderArrowUp = e => {
-                                if(e.code == "ArrowRight")
+                                if(e.code == "ArrowUp")
                                     {
                                         document.body.removeEventListener('keydown', hanlderArrowUp)
                                         hall(); // <-- Siguiente nivel
                                     }
                                 }
                             document.body.addEventListener('keydown', hanlderArrowUp )
-                        }, 1000);
-                    }, 3000);
-                }, 1000);
-            }, 2500)
-        }, 2000)
-    }, 5000)
+                        }, 800);
+                    }, 1800);
+                }, 800);
+            }, 2200)
+        }, 800)
+    }, 4000)
 }
 
 function hall() {
 //FIXING DOM
+    //FondoCatacombs to Hall
     if(containerFondo[2].style.display == 'block') { 
         containerFondo[2].style.display = 'none';
         containerFondo[3].style.display = 'block';
     }
+    //Debris to Hall
     if(containerFondo[4].style.display == 'block') { 
         containerFondo[4].style.display = 'none';
         containerFondo[3].style.display = 'block';
     }
+    //PuertaCode to Hall
     if(containerFondo[5].style.display == 'block') { 
         containerFondo[5].style.display = 'none';
         containerFondo[3].style.display = 'block';
     }
+    //Pasillo to Hall
     if(containerFondo[6].style.display == 'block') { 
         containerFondo[6].style.display = 'none';
         containerFondo[3].style.display = 'block';
     }
+    //Catacombs to Hall
     if(containerFondo[10].style.display == 'block') { 
         containerFondo[10].style.display = 'none';
         containerFondo[3].style.display = 'block';
@@ -241,29 +245,25 @@ function hall() {
         if(e.code == "ArrowLeft")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                debris(); // <-- Siguiente nivel
+                debris(); // <-- To move
             }
         if(e.code == "ArrowRight")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                puertaCode(); // <-- Siguiente nivel
+                puertaCode(); // <-- To move
             }
         if(e.code == "ArrowUp")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                pasillo(); // <-- Siguiente nivel
+                pasillo(); // <-- To move
             }
         if(e.code == "ArrowDown")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                catacombs(); // <-- Siguiente nivel
+                catacombs(); // <-- To move
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )
-
-
-
-
 }
 
 function debris() {
@@ -277,7 +277,7 @@ function debris() {
         if(e.code == "ArrowDown")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                hall(); // <-- Siguiente nivel
+                hall(); // <-- To move
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )
@@ -294,7 +294,7 @@ function puertaCode() {
         if(e.code == "ArrowDown")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                hall(); // <-- Siguiente nivel
+                hall(); // <-- To move
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )
@@ -324,22 +324,22 @@ const hanlderArrows = e => {
     if(e.code == "ArrowLeft")
         {
             document.body.removeEventListener('keydown', hanlderArrows)
-            hab1(); // <-- Siguiente nivel
+            hab1(); // <-- To move
         }
     if(e.code == "ArrowRight")
         {
             document.body.removeEventListener('keydown', hanlderArrows)
-            hab2(); // <-- Siguiente nivel
+            hab2(); // <-- To move
         }
     if(e.code == "ArrowUp")
         {
             document.body.removeEventListener('keydown', hanlderArrows)
-            toilet(); // <-- Siguiente nivel
+            toilet(); // <-- To move
         }
     if(e.code == "ArrowDown")
         {
             document.body.removeEventListener('keydown', hanlderArrows)
-            hall(); // <-- Siguiente nivel
+            hall(); // <-- To move
         }
     }
 document.body.addEventListener('keydown', hanlderArrows )
@@ -349,6 +349,8 @@ document.body.addEventListener('keydown', hanlderArrows )
 }
 
 function hab1() {
+//INTERVALS
+    let intervalTrueno;
 //FIXING DOM
     if(containerFondo[6].style.display == 'block') { 
         containerFondo[6].style.display = 'none';
@@ -359,10 +361,34 @@ function hab1() {
         if(e.code == "ArrowDown")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                pasillo(); // <-- Siguiente nivel
+                pasillo(); // <-- To move
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )
+
+    setTimeout(()=> {
+        intervalTrueno = setInterval(()=>{
+            containerFondo[7].classList.remove('containerHab1')
+            containerFondo[7].classList.add('containerHab1Trueno')
+            gato.src = "src/images/clues/gatoTrueno.png"
+            setTimeout(()=>{
+                containerFondo[7].classList.remove('containerHab1Trueno')
+                containerFondo[7].classList.add('containerHab1')
+                gato.src = "src/images/clues/gato.png"
+            }, 50)
+        }, 150)
+        //cambiar settimeout por onclic hab1
+        setTimeout(() => {
+            if(intervalTrueno) {
+                clearInterval(intervalTrueno)
+                gato.remove()
+                document.getElementById('containerDebris').appendChild(gato) 
+            }
+        }, 4000);
+
+
+    }, 1000)
+
 }
 
 function hab2() {
@@ -376,7 +402,7 @@ function hab2() {
         if(e.code == "ArrowDown")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                pasillo(); // <-- Siguiente nivel
+                pasillo(); // <-- To move
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )
@@ -393,7 +419,7 @@ function toilet() {
         if(e.code == "ArrowDown")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                pasillo(); // <-- Siguiente nivel
+                pasillo(); // <-- To move
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )
@@ -411,15 +437,15 @@ function catacombs() {
     }
 //MOVING THROUGH ROOMS
     const hanlderArrows = e => {
-        if(e.code == "ArrowDown")
-            {
-                document.body.removeEventListener('keydown', hanlderArrows)
-                hall(); // <-- Siguiente nivel
-            }
         if(e.code == "ArrowUp")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                cell(); // <-- Siguiente nivel
+                hall(); // <-- To move
+            }
+        if(e.code == "ArrowDown")
+            {
+                document.body.removeEventListener('keydown', hanlderArrows)
+                cell(); // <-- To move
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )
@@ -433,11 +459,34 @@ function cell() {
     }
 //MOVING THROUGH ROOMS
     const hanlderArrows = e => {
-        if(e.code == "ArrowDown")
+        if(e.code == "ArrowUp")
             {
                 document.body.removeEventListener('keydown', hanlderArrows)
-                catacombs(); // <-- Siguiente nivel
+                catacombs(); // <-- To move
             }
         }
     document.body.addEventListener('keydown', hanlderArrows )
 }
+
+function ventana() {
+    let inputs = document.getElementById('inputs')
+    inputs.style.visibility = 'visible'
+}
+
+function pista1() {
+    document.getElementById('ahorcado').remove()
+    containerClues.innerHTML += `<img src="src/imagesQr/qrcode_images.uncyclomedia.co.png" alt="pista1" width="80px">`
+}
+
+function pista2() {
+    containerClues.innerHTML += `<img src="src/imagesQr/qrcode_static.thenounproject.com.png" alt="pista2" width="80px">`
+}
+
+function pista3() {
+    let respuesta = document.getElementById('respuesta').value
+    if(respuesta == "help") {
+        inputs.style.visibility = 'hidden'
+        containerClues.innerHTML += `<img src="src/imagesQr/qrcode_www.soy502.com.png" alt="pista3" width="80px">`
+    }
+}
+

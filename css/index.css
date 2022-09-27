@@ -1,8 +1,24 @@
 body {
     background-color: rgb(16, 7, 39);
-    padding: 4%;
+    padding: 10px;
     font-family: sans-serif;
 }
+
+    #respuestaVentana {
+        margin-top: 20px;
+        border-radius: 20px;
+        color: rgb(255, 255, 255);
+        font-size: xx-large;
+        font-weight: bold;
+        text-shadow: 3px 3px rgb(177, 0, 0);
+        background-color: black;
+        opacity: 0.5;
+    }
+
+    #respuestaVentana:hover {
+        opacity: 1;
+    }
+
 .displayNone {
     display: none;
 }
@@ -74,62 +90,144 @@ span {
 }
 
 .containerFondoPointer {
-    background-image: url('../src/images/pointer.png');
+    background-image: url('../src/images/tutorial/pointer.png');
     background-size: contain;
-
 }
 
 .containerFondoKeyboard {
-    background-image: url('../src/images/keyboard-arrows02.jpg');
+    background-image: url('../src/images/tutorial/keyboard-arrows.jpg');
     background-size: contain;
 }
 
-.containerFondoCatacombs, .containerCatacombs {
-    background-image: url('../src/images/Catacombs-of-Rome.jpg');
+.containerFondoCatacombs {
+    background-image: url('../src/images/scenarios/Catacombs-of-Rome.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerHall {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/hall.jpg');
+    background-image: url('../src/images/scenarios/hall.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerDebris {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/debris02.jpg');
+    background-image: url('../src/images/scenarios/debris.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerPuertaCode {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/puertaCode.jpg');
+    background-image: url('../src/images/scenarios/puertaCode.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+        .containerPuertaCode img {
+            width: 230px;
+            margin-top: 110px;
+            margin-left: 250px; 
+        }
 
 .containerPasillo {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/pasillo.jpg');
+    background-image: url('../src/images/scenarios/pasillo.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+        #ventana {
+            height: 80px;
+            width: 45px;
+            margin-top: 25%;
+            margin-left: 1%;
+        }
 
 .containerHab1{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/hab01.jpg');
+    background-image: url('../src/images/scenarios/hab01.png');
     background-size: cover;
     background-repeat: no-repeat;
+    position: relative;
 }
 
+.containerHab1Trueno {
+    background-image: url('../src/images/scenarios/hab01trueno.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+        #gato {
+            width: 40px;
+            position: absolute;
+            top: 300px;
+            left: 400px;
+        }
+
+        #help {
+            width: 110px;
+            position: absolute;
+            top: 70px;
+            left: 200px;
+        }
+
 .containerHab2 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/hab02.jpg');
+    background-image: url('../src/images/scenarios/hab02.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .containerToilet {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/toilet.jpg');
+    background-image: url('../src/images/scenarios/toilet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.containerCatacombs {
+    background-image: url('../src/images/scenarios/Catacombs-of-Rome.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 
+
+
+
+
+
+
+footer {
+    padding-top: 50px;
+    height: 100px;
+}
+
+        footer img {
+            margin: 10px;
+        }
+
+
+
+
+ 
+        
+
+
+
+#containerBody{
+    display: flex;
+    justify-content: start;
+}
+
+    #inputs {
+        margin: 80px 20px;
+        width: 280px;
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #respuesta {
+        font-size: 2rem;
+        background-color: rgb(34, 11, 92);
+        color: white;
+    }

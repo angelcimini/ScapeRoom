@@ -9,82 +9,101 @@
 </head>
 <body>
     
-    <section id="sectionFondoPointer">
-        <div class="containerFondo dark">
-            <div class="titleDiv">
-                <h1 id="titulo1">
-                    <p>Te duele la cabeza. Intentas abrir un ojo pero todo está demasiado oscuro. Te cuesta concentrarte, te han drogado.</p>
-                    <p>Por alguna razón permaneces quieto, inmóvil, tumbado dónde estás. ¡Oyes un teléfono!</p>
-                </h1>
-            </div>
-            <button onclick="fondoPointer()" id="btn1">Despertar</button>
+    <div id="containerBody">
+        <div id="inputs">
+            <input type="text" id="respuesta">
+            <input type="button" value="probar" id="respuestaVentana" onclick="pista3()">
         </div>
-    </section>
-    
-    <section id="sectionFondoKeyboard">
-        <div class="containerFondo displayNone dark">
-            <div class="titleDiv">
-                <h1 id="titulo2">
-                    <p>Cuando eres capaz de levantarte, todo sigue oscuro. Caminas con una mano en la pared y otra delante. De pronto sientes el pomo de una puerta entre los dedos</p>
-                </h1>
-            </div>
-        </div>
-    </section>
 
-    <section id="sectionFondoCatacombs">
-        <div class="containerFondo displayNone dark">
-            <h1 id="titulo3">
-            </h1>
-        </div>
-    </section>
+        <div id="juego">
 
-    <section id="sectionHall">
-        <div class="containerFondo displayNone containerHall">
+            <section id="sectionFondoPointer">
+                <div class="containerFondo dark">
+                    <div class="titleDiv">
+                        <h1 id="titulo1">
+                            <p>Te duele la cabeza. Intentas abrir un ojo pero todo está demasiado oscuro. Te cuesta concentrarte, te han drogado.</p>
+                            <p>Por alguna razón permaneces quieto, inmóvil, tumbado dónde estás. ¡Oyes un teléfono!</p>
+                        </h1>
+                    </div>
+                    <button onclick="fondoPointer()" id="btn1">Despertar</button>
+                </div>
+            </section>
+            
+            <section id="sectionFondoKeyboard">
+                <div class="containerFondo displayNone dark">
+                    <div class="titleDiv">
+                        <h1 id="titulo2">
+                            <p>Cuando eres capaz de levantarte, todo sigue oscuro. Caminas con una mano en la pared y otra delante. De pronto sientes el pomo de una puerta entre los dedos</p>
+                        </h1>
+                    </div>
+                </div>
+            </section>
+        
+            <section id="sectionFondoCatacombs">
+                <div class="containerFondo displayNone dark">
+                    <h1 id="titulo3">
+                    </h1>
+                </div>
+            </section>
+        
+            <section id="sectionHall">
+                <div class="containerFondo displayNone containerHall">
+                </div>
+            </section>
+        
+            <section id="sectionDebris">
+                <div class="containerFondo displayNone containerDebris" id="containerDebris">           
+                </div>
+            </section>
+        
+            <section id="sectionPuertaCode">
+                <div class="containerFondo displayNone containerPuertaCode">
+                    <img src="src/images/clues/doorCode.png" alt="ahorcado" id="ahorcado" onclick="pista1()">         
+                </div>
+            </section>
+        
+            <section id="sectionPasillo">
+                <div class="containerFondo displayNone containerPasillo">
+                    <div id="ventana" onclick="ventana()">
+                    </div>      
+                </div>
+            </section>
+        
+            <section id="sectionHab1">
+                <div class="containerFondo displayNone containerHab1">
+                    <img src="src/images/clues/gato.png" alt="gato" id="gato">
+                    <img src="src/images/clues/help.png" id="help">          
+                </div>
+            </section>
+            
+            <section id="sectionHab2">
+                <div class="containerFondo displayNone containerHab2">            
+                </div>
+            </section>    
+            
+            <section id="sectionToilet">
+                <div class="containerFondo displayNone containerToilet">            
+                </div>
+            </section>
+        
+            <section id="sectionCatacombs">
+                <div class="containerFondo displayNone containerCatacombs">            
+                </div>
+            </section>
+        
+            <section id="sectionCell">
+                <div class="containerFondo displayNone dark">           
+                </div>
+            </section>
         </div>
-    </section>
+        
+    </div>
 
-    <section id="sectionDebris">
-        <div class="containerFondo displayNone containerDebris">           
-        </div>
-    </section>
+    <footer id="footer">
+        <div id="containerClues">
 
-    <section id="sectionPuertaCode">
-        <div class="containerFondo displayNone containerPuertaCode">           
         </div>
-    </section>
-
-    <section id="sectionPasillo">
-        <div class="containerFondo displayNone containerPasillo">           
-        </div>
-    </section>
-
-    <section id="sectionHab1">
-        <div class="containerFondo displayNone containerHab1">            
-        </div>
-    </section>
-
-    
-    <section id="sectionHab2">
-        <div class="containerFondo displayNone containerHab2">            
-        </div>
-    </section>
-    
-    
-    <section id="sectionToilet">
-        <div class="containerFondo displayNone containerToilet">            
-        </div>
-    </section>
-
-    <section id="sectionCatacombs">
-        <div class="containerFondo displayNone containerCatacombs">            
-        </div>
-    </section>
-
-    <section id="sectionCell">
-        <div class="containerFondo displayNone dark">            
-        </div>
-    </section>
-
+    </footer>
     <script src="js/index.js"></script>
 </body>
 </html>
