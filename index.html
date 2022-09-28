@@ -24,7 +24,7 @@
 
             <div id="inputsSalida">
                 <input type="text" id="respuestaSalida">
-                <input type="button" value="probar" id="respuestaSalida" onclick="victory()">
+                <input type="button" value="probar" id="respuestaWin" onclick="respuestaWin()">
             </div>
 
         </div>
@@ -66,7 +66,8 @@
             </section>
         
             <section id="sectionDebris">
-                <div class="containerFondo displayNone containerDebris" id="containerDebris">           
+                <div class="containerFondo displayNone containerDebris" id="containerDebris">
+                    <img src="src/imagesQr/NQrCode.png" alt="QrGraffiti" id="QrGraffiti" onclick="pista2()">           
                 </div>
             </section>
         
@@ -80,7 +81,7 @@
         
             <section id="sectionPasillo">
                 <div class="containerFondo displayNone containerPasillo">
-                    <div id="ventana" onclick="ventana()">
+                    <div id="ventana" onclick="pista6()">
                     </div>      
                 </div>
             </section>
@@ -121,15 +122,18 @@
                     <input type="button" onclick="pista5()" id="botonOscuro"></input>           
                 </div>
             </section>
+
+            <img src="src/images/tutorial/flyingArrowsWhite.png" alt='staticArrows' id='staticArrowsId'>
+            <img src="src/images/tutorial/pointerNoBackground.png" alt='pointerNoBackground' id='pointerNoBackgroundId'>
         </div>  
-
     </div>
-
+    
     <footer id="footer">
         <div id="containerClues">
 
         </div>
     </footer>
+    
     <script src="js/index.js"></script>
 </body>
 </html>

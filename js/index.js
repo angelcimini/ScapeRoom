@@ -24,30 +24,28 @@ let fNote = document.getElementById('fNote')
 
 let melody = '';
 
+let gurgles = new Audio('src/audio/gurgles.aiff');
+let storm = new Audio('src/audio/rain-on-window.mp3');
+let footsteps = new Audio('src/audio/door-footsteps.mp3');
+let toneBeep = new Audio('src/audio/tone-beep.wav');
+let angry = new Audio('src/audio/the-angry.wav');
+let beeps = new Audio('src/audio/beeps.wav')
+let countdown = new Audio('src/audio/countdown.wav')
 
 function fondoPointer() {
 //INTERVALS
     let intervalPointer;
 
 //AUDIOS
-    let gurgles = new Audio('src/audio/gurgles.aiff');
     gurgles.play();
     gurgles.loop = true;
     gurgles.volume =  0.4;
-
-    let storm = new Audio('src/audio/rain-on-window.mp3');
     storm.play();
     storm.loop = true;
     storm.volume = 0.4;
-
-    let footsteps = new Audio('src/audio/door-footsteps.mp3');
-
-    let toneBeep = new Audio('src/audio/tone-beep.wav');
-
-    let angry = new Audio('src/audio/the-angry.wav');
     angry.volume = 0.02;
-    let beeps = new Audio('src/audio/beeps.wav')
     beeps.volume = 0.08;
+
 
 //DEV HACK
 const kdev = 50;
@@ -106,16 +104,23 @@ const k8 = 6000;
                                         if(intervalPointer) {clearInterval(intervalPointer)};
                                         footsteps.pause();
                                         fondoKeyboard(); // <-- Siguiente nivel
+                                        setTimeout(() => {
+                                            countdown.play()
+                                        }, 600);
+                                        setTimeout(() => {
+                                            countdown.pause()
+                                        }, 4300);
                                         const contador = document.getElementById("contador")
                                         const startingMinutes = 22;
                                         let time = startingMinutes * 60;
                                         function updateContador() {
                                             const minutes = Math.floor(time / 60)
                                             let seconds = time % 60
-                                            minutes < 10 ? minutes = "0" + minutes : minutes;
-                                            seconds < 10 ? seconds = "0" + seconds : seconds;
+                                            minutes < 10 ? minutes = `0${minutes}` : minutes;
+                                            seconds < 10 ? seconds = `0${seconds}` : seconds;
                                             contador.innerHTML = `${minutes}:${seconds}`
                                             time--
+                                            if(time == 0) { loseGame() }
                                         }
                                         setInterval(updateContador, 1000)
                                         document.getElementById('inputTimer').style.visibility = 'visible'       
@@ -142,6 +147,7 @@ function fondoKeyboard() {
     
 //AUDIOS    
     let bloockedDoor = new Audio('src/audio/bloocked-door.wav');
+    bloockedDoor.volume = 1;
     
 //DOM CHANGES    
     containerFondo[1].addEventListener('click', ()=>{
@@ -217,7 +223,7 @@ function fondoCatacombs() {
                     setTimeout(() => {
                         titulo3.innerHTML = `<span>Debo darme prisa</span>`
                         setTimeout(() => {
-                            titulo3.innerHTML = ``                        
+                            titulo3.innerHTML = ``                  
                         }, 1000);                        
                         setTimeout(() => {
                             const hanlderArrowUp = e => {
@@ -491,41 +497,37 @@ function cell() {
     document.body.addEventListener('keydown', hanlderArrows )
 }
 
-function ventana() {
-    let inputs = document.getElementById('inputs')
-    inputs.style.visibility = 'visible'
-}
-
-function victory() {
-    let inputsSalida = document.getElementById('inputsSalida')
-    inputsSalida.style.visibility = 'visible'
-}
-
 function pista1() {
     document.getElementById('ahorcado').remove()
-    containerClues.innerHTML += `<img src="src/imagesQr/qrcode_images.uncyclomedia.co.png" alt="pista1" width="80px">`
+    containerClues.innerHTML += `<img src="src/imagesQr/AQrCode.png" alt="pista1" width="80px">`
 }
 
 function pista2() {
-    containerClues.innerHTML += `<img src="src/imagesQr/qrcode_static.thenounproject.com.png" alt="pista2" width="80px">`
+    document.getElementById('QrGraffiti').remove()
+    containerClues.innerHTML += `<img src="src/imagesQr/NQrCode.png" alt="pista2" width="80px">`
 }
 
 function pista3() {
     let respuesta = document.getElementById('respuesta').value
     if(respuesta == "help") {
         inputs.style.visibility = 'hidden'
-        containerClues.innerHTML += `<img src="src/imagesQr/qrcode_www.soy502.com.png" alt="pista3" width="80px">`
+        containerClues.innerHTML += `<img src="src/imagesQr/IQrCode.png" alt="pista3" width="80px">`
     }
 }
 
 function pista4() {
     gato.remove()
-    containerClues.innerHTML += `<img src="src/imagesQr/qrcode_www.kelloggs.es.png" alt="pista1" width="80px">`
+    containerClues.innerHTML += `<img src="src/imagesQr/RQrcode.png" alt="pista1" width="80px">`
 }
 
 function pista5() {
     botonOscuro.remove()
-    containerClues.innerHTML += `<img src="src/imagesQr/qrcode_i.pinimg.com.png" alt="pista1" width="80px">`
+    containerClues.innerHTML += `<img src="src/imagesQr/HQrCode.png" alt="pista1" width="80px">`
+}
+
+function pista6() {
+    let inputs = document.getElementById('inputs')
+    inputs.style.visibility = 'visible'
 }
 
 function gSound() {
@@ -559,11 +561,14 @@ function pista6() {
             dNote.remove()
             fNote.remove()
             console.log(melody)
+            containerFondo[9].classList.remove('containerToilet')
+            containerFondo[9].classList.add('containerToiletLight')
+            containerFondo[9].innerHTML = ``
             setTimeout(() => {
-                    containerFondo[10].classList.remove('containerToilet')
-                    containerFondo[10].classList.add('containerToiletLight') 
-            }, 500);
-            containerClues.innerHTML += `<img src="src/imagesQr/qrcode_1.bp.blogspot.com.png" alt="pista1" width="80px">`    
+                containerFondo[9].classList.remove('containerToiletLight')
+                containerFondo[9].classList.add('containerToilet')
+            }, 2500);
+            containerClues.innerHTML += `<img src="src/imagesQr/OQrCode.png" alt="pista1" width="80px">`    
         } else {
             melody = '';
         } 
@@ -587,11 +592,31 @@ function fSound() {
     console.log(melody)
     melody == 'cde' ? melody = 'cdef' : melody = '';
 }
+
 function victory() {
+    let inputsSalida = document.getElementById('inputsSalida')
+    inputsSalida.style.visibility = 'visible'
+}
+function respuestaWin() {
     let respuestaSalida = document.getElementById('respuestaSalida').value
     if(respuestaSalida == "ironhack") {
         inputs.style.visibility = 'hidden'
-        
-        document.body.style.backgroundColor = rgb(50,255,50)
+        let victory = new Audio('src/audio/victory.mp3')
+        storm.pause()
+        gurgles.pause()
+        victory.volume = 0.7
+        victory.play()
+        let doc = document.getElementsByTagName('body')
+        doc[0].innerHTML= `<div><h2>YOU WIN</h2></div>`
+        doc[0].classList.add('victory')
     }
+
+}
+function winGame() {
+    
+}
+function loseGame() {
+    let doc = document.getElementsByTagName('body')
+    doc[0].innerHTML= `<div><h2>YOU LOSE</h2></div>`
+    doc[0].classList.add('lose')
 }

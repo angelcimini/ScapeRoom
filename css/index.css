@@ -1,21 +1,23 @@
 body {
     background-color: rgb(16, 7, 39);
-    padding: 10px;
+    padding-left: 40px;
     font-family: sans-serif;
+    position: relative;
 }
 
-    #respuestaVentana {
+    #respuestaVentana, #respuestaWin {
         margin-top: 20px;
         border-radius: 20px;
         color: rgb(255, 255, 255);
         font-size: xx-large;
         font-weight: bold;
         text-shadow: 3px 3px rgb(177, 0, 0);
-        background-color: black;
+        background-color: rgb(16, 7, 39);
+        border: 0;
         opacity: 0.5;
     }
 
-    #respuestaVentana:hover {
+    #respuestaVentana:hover, #respuestaWin:hover {
         opacity: 1;
     }
 
@@ -29,7 +31,7 @@ body {
     width: 700px;
     height: 450px;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 50px;
     box-shadow: 10px 10px 10px 7px rgba(0, 0, 0, 0.5);
     padding-top: 10px;
 }
@@ -61,16 +63,15 @@ button:hover {
     background-color: rgb(0, 0, 0);
 }
 
-.danger {
+.lose {
     background-color: rgb(206, 0, 0);
     /* transition: background-color 1.5s; */
 }
-.alert {
-    background-color: rgb(236, 147, 0);
-    /* transition: background-color 1.5s; */
-}
+
 .victory {
+    background-size: cover;
     background-color: rgb(0, 139, 0);
+    text-align: center;
     /* transition: background-color 1.5s; */
 }
 
@@ -135,7 +136,6 @@ span {
         #salida {
             width: 180px;
             height: 180px;
-            border: 1px dotted white;
             margin-left: 120px;
             position: absolute;
             top: 200px;
@@ -204,7 +204,6 @@ span {
 
         .containerInputs {
             display: flex;
-            flex-direction: column;
             justify-content: space-around;
             padding-left: 20px;
         }
@@ -227,7 +226,7 @@ span {
 #sectionCell containerFondo input {
     height: 100px;
     width: 100px;
-    border: 2px solid white;
+    border: 1px solid white;
 }
 
         #botonOscuro {
@@ -238,7 +237,7 @@ span {
         }
 
         footer img {
-            margin: 15px;
+            margin: 10px;
             width: 140px;
         }
 
@@ -255,7 +254,7 @@ span {
 }
 
     #inputs, #inputsSalida, #inputTimer {
-        margin: 20px 20px;
+        margin: 0px 20px 10px 10px;
         width: 280px;
         visibility: hidden;
         display: flex;
@@ -263,12 +262,37 @@ span {
         justify-content: center;
     }
 
-    #respuesta, #contador {
-        font-size: 2rem;
-        background-color:  rgb(16, 7, 39);
+    #respuesta, #contador, #respuestaSalida {
+        font-size: 3.5rem;
+        border-radius: 30px;
+        background-color:  rgb(26, 17, 49);
         color: white;
+        padding: 5px;
     }
 
+h2 {
+    font-size: 5rem;
+    color: white;
+    text-shadow: 3px 3px rgb(177, 0, 0);
+}
 
+#QrGraffiti {
+    width: 50px;
+    margin-top: 300px;
+}
 
-    
+#staticArrowsId {
+    position: absolute;
+    height: 50px;
+    width: 65px;
+    left: 1070px;
+    top: 300px;
+}
+
+#pointerNoBackgroundId {
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    left: 1070px;
+    top: 230px;
+}
