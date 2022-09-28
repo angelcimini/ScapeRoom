@@ -10,9 +10,23 @@
 <body>
     
     <div id="containerBody">
-        <div id="inputs">
-            <input type="text" id="respuesta">
-            <input type="button" value="probar" id="respuestaVentana" onclick="pista3()">
+
+        <div id="externalHtml">
+
+            <div id="inputTimer">
+                <p id="contador"></p>          
+            </div>
+
+            <div id="inputs">
+                <input type="text" id="respuesta">
+                <input type="button" value="probar" id="respuestaVentana" onclick="pista3()">
+            </div>
+
+            <div id="inputsSalida">
+                <input type="text" id="respuestaSalida">
+                <input type="button" value="probar" id="respuestaSalida" onclick="victory()">
+            </div>
+
         </div>
 
         <div id="juego">
@@ -58,7 +72,9 @@
         
             <section id="sectionPuertaCode">
                 <div class="containerFondo displayNone containerPuertaCode">
-                    <img src="src/images/clues/doorCode.png" alt="ahorcado" id="ahorcado" onclick="pista1()">         
+                    <div id="salida" onclick="victory()">
+                    </div>         
+                    <img src="src/images/clues/doorCode.png" alt="ahorcado" id="ahorcado" onclick="pista1()">
                 </div>
             </section>
         
@@ -82,7 +98,16 @@
             </section>    
             
             <section id="sectionToilet">
-                <div class="containerFondo displayNone containerToilet">            
+                <div class="containerFondo displayNone containerToilet">
+                    <div class="containerInputs">
+                        <input type="button" value=" G " id="gNote" onclick="gSound()">           
+                        <input type="button" value=" C " id="cNote" onclick="cSound()">           
+                        <input type="button" value=" A " id="aNote" onclick="aSound()">           
+                        <input type="button" value=" B " id="bNote" onclick="pista6()">           
+                        <input type="button" value=" E " id="eNote" onclick="eSound()">           
+                        <input type="button" value=" D " id="dNote" onclick="dSound()">           
+                        <input type="button" value=" F " id="fNote" onclick="fSound()">           
+                    </div>
                 </div>
             </section>
         
@@ -92,11 +117,12 @@
             </section>
         
             <section id="sectionCell">
-                <div class="containerFondo displayNone dark">           
+                <div class="containerFondo displayNone dark">
+                    <input type="button" onclick="pista5()" id="botonOscuro"></input>           
                 </div>
             </section>
-        </div>
-        
+        </div>  
+
     </div>
 
     <footer id="footer">

@@ -13,9 +13,19 @@ let titulo3 = document.getElementById('titulo3')
 
 let btn1 = document.getElementById('btn1')
 
+let gNote = document.getElementById('gNote')
+let cNote = document.getElementById('cNote')
+let aNote = document.getElementById('aNote')
+let bNote = document.getElementById('bNote')
+let eNote = document.getElementById('eNote')
+let dNote = document.getElementById('dNote')
+let fNote = document.getElementById('fNote')
+
+
+let melody = '';
+
 
 function fondoPointer() {
-    //borrar controles fijos footer
 //INTERVALS
     let intervalPointer;
 
@@ -96,6 +106,19 @@ const k8 = 6000;
                                         if(intervalPointer) {clearInterval(intervalPointer)};
                                         footsteps.pause();
                                         fondoKeyboard(); // <-- Siguiente nivel
+                                        const contador = document.getElementById("contador")
+                                        const startingMinutes = 22;
+                                        let time = startingMinutes * 60;
+                                        function updateContador() {
+                                            const minutes = Math.floor(time / 60)
+                                            let seconds = time % 60
+                                            minutes < 10 ? minutes = "0" + minutes : minutes;
+                                            seconds < 10 ? seconds = "0" + seconds : seconds;
+                                            contador.innerHTML = `${minutes}:${seconds}`
+                                            time--
+                                        }
+                                        setInterval(updateContador, 1000)
+                                        document.getElementById('inputTimer').style.visibility = 'visible'       
                                     })
 
                                 }, kdev); 
@@ -105,7 +128,7 @@ const k8 = 6000;
                 }, kdev);
             }, kdev);
         }, kdev); 
-    }, kdev);     
+    }, kdev);
 }
 
 function fondoKeyboard() {
@@ -210,7 +233,7 @@ function fondoCatacombs() {
                 }, 800);
             }, 2200)
         }, 800)
-    }, 4000)
+    }, 2000)
 }
 
 function hall() {
@@ -300,7 +323,6 @@ function puertaCode() {
     document.body.addEventListener('keydown', hanlderArrows )
 }
 
-
 function pasillo() {
 //FIXING DOM
     if(containerFondo[3].style.display == 'block') { 
@@ -382,9 +404,10 @@ function hab1() {
             if(intervalTrueno) {
                 clearInterval(intervalTrueno)
                 gato.remove()
+                gato.addEventListener('click', () =>  pista4() )
                 document.getElementById('containerDebris').appendChild(gato) 
             }
-        }, 4000);
+        }, 2000);
 
 
     }, 1000)
@@ -473,6 +496,11 @@ function ventana() {
     inputs.style.visibility = 'visible'
 }
 
+function victory() {
+    let inputsSalida = document.getElementById('inputsSalida')
+    inputsSalida.style.visibility = 'visible'
+}
+
 function pista1() {
     document.getElementById('ahorcado').remove()
     containerClues.innerHTML += `<img src="src/imagesQr/qrcode_images.uncyclomedia.co.png" alt="pista1" width="80px">`
@@ -490,3 +518,80 @@ function pista3() {
     }
 }
 
+function pista4() {
+    gato.remove()
+    containerClues.innerHTML += `<img src="src/imagesQr/qrcode_www.kelloggs.es.png" alt="pista1" width="80px">`
+}
+
+function pista5() {
+    botonOscuro.remove()
+    containerClues.innerHTML += `<img src="src/imagesQr/qrcode_i.pinimg.com.png" alt="pista1" width="80px">`
+}
+
+function gSound() {
+    let gNote = new Audio('src/audio/g.wav');
+    gNote.play();
+    console.log(melody)
+    melody == 'cdef' ? melody = 'cdefg' : melody = '';
+}
+function cSound() {
+    let cNote = new Audio('src/audio/c.wav');
+    cNote.play();
+    melody = 'c'
+}
+function aSound() {
+    let aNote = new Audio('src/audio/a.wav');
+    aNote.play();
+    console.log(melody)
+    melody == 'cdefg' ? melody = 'cdefga' : melody = '';
+}
+function pista6() {
+    let bNote = new Audio('src/audio/b.wav');
+    bNote.play();
+    console.log(melody)
+    setTimeout(() => {
+        if(melody == 'cdefga'){
+            gNote.remove()
+            cNote.remove()
+            aNote.remove()
+            bNote.remove()
+            eNote.remove()
+            dNote.remove()
+            fNote.remove()
+            console.log(melody)
+            setTimeout(() => {
+                    containerFondo[10].classList.remove('containerToilet')
+                    containerFondo[10].classList.add('containerToiletLight') 
+            }, 500);
+            containerClues.innerHTML += `<img src="src/imagesQr/qrcode_1.bp.blogspot.com.png" alt="pista1" width="80px">`    
+        } else {
+            melody = '';
+        } 
+    }, 1000);
+}
+function eSound() {
+    let eNote = new Audio('src/audio/e.wav');
+    eNote.play();
+    console.log(melody)
+    melody == 'cd' ? melody = 'cde' : melody = '';
+}
+function dSound() {
+    let dNote = new Audio('src/audio/d.wav');
+    dNote.play();
+    console.log(melody)
+    melody == 'c' ? melody = 'cd' : melody = ''; 
+}
+function fSound() {
+    let fNote = new Audio('src/audio/f.wav');
+    fNote.play();
+    console.log(melody)
+    melody == 'cde' ? melody = 'cdef' : melody = '';
+}
+function victory() {
+    let respuestaSalida = document.getElementById('respuestaSalida').value
+    if(respuestaSalida == "ironhack") {
+        inputs.style.visibility = 'hidden'
+        
+        document.body.style.backgroundColor = rgb(50,255,50)
+    }
+}
