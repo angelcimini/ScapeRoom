@@ -115,7 +115,7 @@ const k8 = 6000;
                                             countdown.pause()
                                         }, 4300);
                                         const contador = document.getElementById("contador")
-                                        const startingMinutes = 1;
+                                        const startingMinutes = 22;
                                         let time = startingMinutes * 60;
                                         function updateContador() {
                                             let minutes = Math.floor(time / 60)
@@ -133,14 +133,14 @@ const k8 = 6000;
                                         document.getElementById('inputTimer').style.visibility = 'visible'       
                                     })
 
-                                }, kdev); 
-                            }, kdev);
-                        }, kdev);
-                    }, kdev);
-                }, kdev);
-            }, kdev);
-        }, kdev); 
-    }, kdev);
+                                }, 6000); 
+                            }, 3500);
+                        }, 1400);
+                    }, 4560);
+                }, 8000);
+            }, 6000);
+        }, 12000); 
+    }, 2000);
 }
 
 function fondoKeyboard() {
