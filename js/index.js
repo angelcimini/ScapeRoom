@@ -129,7 +129,7 @@ const k8 = 6000;
                                                 loseGame() 
                                             }
                                         }
-                                        intervalTimer = setInterval(updateContador, 100)
+                                        intervalTimer = setInterval(updateContador, 1000)
                                         document.getElementById('inputTimer').style.visibility = 'visible'       
                                     })
 
