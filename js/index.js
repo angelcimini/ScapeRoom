@@ -24,7 +24,7 @@ let fNote = document.getElementById('fNote')
 
 let melody = '';
 
-let gurgles = new Audio('src/audio/gurgles.aiff');
+let gurgles = new Audio('src/audio/gurgles.mp3');
 let storm = new Audio('src/audio/rain-on-window.mp3');
 let footsteps = new Audio('src/audio/door-footsteps.mp3');
 let toneBeep = new Audio('src/audio/tone-beep.wav');
@@ -38,6 +38,7 @@ let lose = new Audio('src/audio/gameOver.wav')
 function fondoPointer() {
 //INTERVALS
     let intervalPointer;
+    let intervalTimer;
 
 //AUDIOS
     gurgles.play();
@@ -114,18 +115,21 @@ const k8 = 6000;
                                             countdown.pause()
                                         }, 4300);
                                         const contador = document.getElementById("contador")
-                                        const startingMinutes = 22;
+                                        const startingMinutes = 1;
                                         let time = startingMinutes * 60;
                                         function updateContador() {
-                                            const minutes = Math.floor(time / 60)
+                                            let minutes = Math.floor(time / 60)
                                             let seconds = time % 60
                                             minutes < 10 ? minutes = `0${minutes}` : minutes;
                                             seconds < 10 ? seconds = `0${seconds}` : seconds;
                                             contador.innerHTML = `${minutes}:${seconds}`
                                             time--
-                                            if(time == 0) { loseGame() }
+                                            if(time == 0) { 
+                                                clearInterval(intervalTimer)
+                                                loseGame() 
+                                            }
                                         }
-                                        setInterval(updateContador, 1000)
+                                        intervalTimer = setInterval(updateContador, 100)
                                         document.getElementById('inputTimer').style.visibility = 'visible'       
                                     })
 
