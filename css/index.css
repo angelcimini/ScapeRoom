@@ -65,14 +65,12 @@ button:hover {
 
 .lose {
     background-color: rgb(206, 0, 0);
-    /* transition: background-color 1.5s; */
+    text-align: center;
 }
 
 .victory {
-    background-size: cover;
     background-color: rgb(0, 139, 0);
     text-align: center;
-    /* transition: background-color 1.5s; */
 }
 
 

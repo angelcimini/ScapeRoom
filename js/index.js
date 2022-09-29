@@ -627,6 +627,7 @@ function victory() {
     let inputsSalida = document.getElementById('inputsSalida')
     inputsSalida.style.visibility = 'visible'
 }
+
 function respuestaWin() {
     let respuestaSalida = document.getElementById('respuestaSalida').value
     if(respuestaSalida == "ironhack") {
@@ -642,9 +643,7 @@ function respuestaWin() {
     }
 
 }
-function winGame() {
-    
-}
+
 function loseGame() {
     let doc = document.getElementsByTagName('body')
     lose.play()
