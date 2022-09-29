@@ -268,6 +268,7 @@ span {
         background-color:  rgb(26, 17, 49);
         color: white;
         padding: 5px;
+        text-align: center;
     }
 
 h2 {
@@ -285,7 +286,7 @@ h2 {
     position: absolute;
     height: 50px;
     width: 65px;
-    left: 1070px;
+    left: 1100px;
     top: 300px;
 }
 
@@ -293,6 +294,13 @@ h2 {
     position: absolute;
     height: 40px;
     width: 50px;
-    left: 1070px;
+    left: 1100px;
     top: 230px;
+}
+
+#camaraId {
+    width: 40px;
+    position: absolute;
+    left: 500px;
+    top: 260px;
 }

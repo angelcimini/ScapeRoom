@@ -3,7 +3,7 @@ let sectionFondoKeyboard = document.getElementById('sectionFondoKeyboard')
 let containerClues = document.getElementById('containerClues')
 let gato = document.getElementById('gato')
 let sectionHab1 = document.getElementById('sectionHab1')
-
+let camaraId = document.getElementById('camaraId')
 let containerFondo = document.getElementsByClassName('containerFondo')
 let titleDiv = document.getElementsByClassName('titleDiv')
 
@@ -31,6 +31,9 @@ let toneBeep = new Audio('src/audio/tone-beep.wav');
 let angry = new Audio('src/audio/the-angry.wav');
 let beeps = new Audio('src/audio/beeps.wav')
 let countdown = new Audio('src/audio/countdown.wav')
+let maullido = new Audio('src/audio/maullido.wav')
+let ronroneo = new Audio('src/audio/ronroneo.wav')
+let lose = new Audio('src/audio/gameOver.wav')
 
 function fondoPointer() {
 //INTERVALS
@@ -189,12 +192,13 @@ function fondoCatacombs() {
 //INTERVALS
     let intervalCatacombs;
     let intervalCatacombs2;
+    let intervalTutorial;
     
 //AUDIOS
     let woodenGate = new Audio('src/audio/large-wooden-gate.wav');
     woodenGate.volume = 0.6;
     woodenGate.play();
-    
+
 //DOM CHANGES 
     setTimeout(()=> {
         intervalCatacombs = setInterval(()=>{
@@ -224,7 +228,23 @@ function fondoCatacombs() {
                         titulo3.innerHTML = `<span>Debo darme prisa</span>`
                         setTimeout(() => {
                             titulo3.innerHTML = ``                  
-                        }, 1000);                        
+                        }, 1000);
+                        
+                        intervalTutorial = setInterval(() => {
+                            document.getElementById('staticArrowsId').classList.add('displayNone')
+                            document.getElementById('pointerNoBackgroundId').classList.add('displayNone')
+                            setTimeout(() => {
+                                document.getElementById('staticArrowsId').classList.remove('displayNone')
+                                document.getElementById('pointerNoBackgroundId').classList.remove('displayNone')                
+                            }, 500);
+                        }, 1000);
+                    
+                        setTimeout(() => {
+                            clearInterval(intervalTutorial)
+                            document.getElementById('staticArrowsId').classList.add('displayNone')
+                            document.getElementById('pointerNoBackgroundId').classList.add('displayNone')
+                        }, 5000);
+
                         setTimeout(() => {
                             const hanlderArrowUp = e => {
                                 if(e.code == "ArrowUp")
@@ -410,6 +430,7 @@ function hab1() {
             if(intervalTrueno) {
                 clearInterval(intervalTrueno)
                 gato.remove()
+                maullido.play()
                 gato.addEventListener('click', () =>  pista4() )
                 document.getElementById('containerDebris').appendChild(gato) 
             }
@@ -517,17 +538,16 @@ function pista3() {
 
 function pista4() {
     gato.remove()
+    ronroneo.play()
+    setTimeout(() => {
+        ronroneo.pause()
+    }, 2000);
     containerClues.innerHTML += `<img src="src/imagesQr/RQrcode.png" alt="pista1" width="80px">`
 }
 
 function pista5() {
     botonOscuro.remove()
     containerClues.innerHTML += `<img src="src/imagesQr/HQrCode.png" alt="pista1" width="80px">`
-}
-
-function pista6() {
-    let inputs = document.getElementById('inputs')
-    inputs.style.visibility = 'visible'
 }
 
 function gSound() {
@@ -593,6 +613,16 @@ function fSound() {
     melody == 'cde' ? melody = 'cdef' : melody = '';
 }
 
+function pista7() {
+    let inputs = document.getElementById('inputs')
+    inputs.style.visibility = 'visible'
+}
+
+function pista8() {
+    camaraId.remove()
+    containerClues.innerHTML += `<img src="src/imagesQr/CQrCode.png" alt="pista1" width="80px">`
+}
+
 function victory() {
     let inputsSalida = document.getElementById('inputsSalida')
     inputsSalida.style.visibility = 'visible'
@@ -617,6 +647,7 @@ function winGame() {
 }
 function loseGame() {
     let doc = document.getElementsByTagName('body')
+    lose.play()
     doc[0].innerHTML= `<div><h2>YOU LOSE</h2></div>`
     doc[0].classList.add('lose')
 }
