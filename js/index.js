@@ -133,14 +133,14 @@ const k8 = 6000;
                                         document.getElementById('inputTimer').style.visibility = 'visible'       
                                     })
 
-                                }, kdev); 
-                            }, kdev);
-                        }, kdev);
-                    }, kdev);
-                }, kdev);
-            }, kdev);
-        }, kdev); 
-    }, kdev);
+                                }, 6000); 
+                            }, 3500);
+                        }, 1400);
+                    }, 4560);
+                }, 8000);
+            }, 6000);
+        }, 12000); 
+    }, 2000);
 }
 
 function fondoKeyboard() {
