@@ -34,6 +34,8 @@ body {
     border-radius: 50px;
     box-shadow: 10px 10px 10px 7px rgba(0, 0, 0, 0.5);
     padding-top: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .containerFondo h1 {
@@ -301,4 +303,40 @@ h2 {
     position: absolute;
     left: 500px;
     top: 260px;
+}
+
+#flechaDerecha {
+    width: 15px;
+    height: 20px;
+    position: absolute;
+    top: 200px;
+    left: 1042px;
+    z-index: 2;
+}
+
+#flechaAbajo{
+    width: 20px;
+    height: 15px;
+    position: absolute;
+    left: 30px;
+    z-index: 3;
+    left: 690px;
+    top: 452px;
+}
+
+#flechaArriba{
+    width: 20px;
+    height: 15px;
+    position: absolute;
+    z-index: 4;
+    left: 690px;
+}
+
+#flechaIzquierda{
+    width: 15px;
+    height: 20px;
+    position: absolute;
+    z-index: 5;
+    top: 200px;
+    left: 350px;
 }

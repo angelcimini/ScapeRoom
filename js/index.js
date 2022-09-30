@@ -133,14 +133,14 @@ const k8 = 6000;
                                         document.getElementById('inputTimer').style.visibility = 'visible'       
                                     })
 
-                                }, 6000); 
-                            }, 3500);
-                        }, 1400);
-                    }, 4560);
-                }, 8000);
-            }, 6000);
-        }, 12000); 
-    }, 2000);
+                                }, kdev); 
+                            }, kdev);
+                        }, kdev);
+                    }, kdev);
+                }, kdev);
+            }, kdev);
+        }, kdev); 
+    }, kdev);
 }
 
 function fondoKeyboard() {
@@ -546,7 +546,8 @@ function pista4() {
     setTimeout(() => {
         ronroneo.pause()
     }, 2000);
-    containerClues.innerHTML += `<img src="src/imagesQr/RQrcode.png" alt="pista1" width="80px">`
+    if(!containerClues.innerHTML.includes(`<img src="src/imagesQr/RQrcode.png" alt="pista1" width="80px">`))
+    {containerClues.innerHTML += `<img src="src/imagesQr/RQrcode.png" alt="pista1" width="80px">`}
 }
 
 function pista5() {
